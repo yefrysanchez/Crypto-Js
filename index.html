@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CryptoJS</title>
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="nav">
+        <div class="logo">
+          <h1>CryptoJS</h1>
+        </div>
+        <ul class="items">
+          <li class="search glow">
+            <img src="/images/search.png" alt="search icon" />
+          </li>
+          <li class="search-input">
+            <form id="search-input">
+              <input type="text" placeholder="Search" />
+            </form>
+          </li>
+          <li><a href="#">Account</a></li>
+          <li><a href="#">Log out</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="section-img">
+        <picture>
+          <img src="/images/crypto-banner.jpg" alt="banner" />
+        </picture>
+      </section>
+
+      <section class="trending-container">
+        <h1>Trending</h1>
+        <div class="trending"></div>
+        <div class="watchlist">
+          <h1>Watchlist</h1>
+          <div class="cards">
+            <div class="card glow">
+              <a href="#">
+                <div class="token-img">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1024px-Bitcoin.svg.png"
+                    alt=""
+                  />
+                </div>
+                <div class="card-data">
+                  <span class="card-token">BTN</span>
+                  <span class="card-price"> $17,455</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-table glow">
+        <table class="table">
+          <thead>
+            <tr class="title">
+              <th></th>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>24h %</th>
+              <th class="hour">Today's High</th>
+              <th class="d7">Today's Low</th>
+              <th class="market">Market Cap</th>
+            </tr>
+          </thead>
+          <tbody class="tbody"></tbody>
+        </table>
+      </section>
+
+      <section class="search-container">
+        <table class="search-table table">
+          <thead>
+            <tr class="search-item">
+              <th></th>
+              <th class="mobile-delete">Rank</th>
+              <th>Name</th>
+              <th >Price</th>
+              <th class="mobile-delete">24h %</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="search-item">
+              <th><img class="fav" src="/images/favarites.png" alt="" /></th>
+              <td class="top mobile-delete">1</td>
+              <th class="name name-coin">
+                <span><img src="images/search.png" alt="" /></span>
+                name
+              </th>
+              <td class="price">14</td>
+              <td class="h24 mobile-delete">14%</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="close-seach">
+            <img src="/images/x-icon.png" alt="close icon">
+        </div>
+      </section>
+      <div class="layer"></div>
+
+      
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>

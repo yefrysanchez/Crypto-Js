@@ -1,0 +1,13 @@
+Trending Section [x]
+Favorites Section / media quaries[x]
+Fix 1H% 7d% [x]
+positive and negative in Portcentage [x]
+Sign in Page/ Register []
+watchlist []
+search bar [x] ---- onsubmit puedo hacer que aparezca un table absoluta con layer y el que elija lo manda pa la pagina
+Proxima Pagina con Graficos [] -domingo
+
+
+
+show more coin [] -------- poner input de numero absoluto
+fix estrellas
