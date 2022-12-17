@@ -242,7 +242,6 @@ table {
 
 .fav {
   width: 55px;
-  cursor: pointer;
 }
 
 .search-container {
@@ -298,6 +297,32 @@ table {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.473);
+}
+
+.star {
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.watching {
+  color: var(--logo);
+}
+
+.show {
+  width: 30%;
+  border: none;
+  background-color: var(--bg-color);
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--pale-blue);
+  font-weight: 700;
+  text-align: center;
+  border-radius: var(--border-radius);
+  padding: 0.5rem;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }
 
 @media screen and (max-width: 1000px) {
@@ -395,7 +420,7 @@ table {
   }
 }
 
-@media screen and (max-width:500px) {
+@media screen and (max-width: 500px) {
   .search-item {
     padding: 1rem 0;
     width: 100%;
@@ -405,7 +430,7 @@ table {
     text-align: center;
   }
 
-  .mobile-delete{
+  .mobile-delete {
     display: none;
   }
 }
