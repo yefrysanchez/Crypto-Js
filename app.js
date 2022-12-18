@@ -73,9 +73,9 @@ setTimeout(() => {
           </div>
           <div class="card-data">
             <span class="card-token">${e.item.name}</span>
-            <span class="card-price">$${(e.item.price_btc * change)
-              .toFixed(2)
-              .toLocaleString()}</span>
+            <span class="card-price">$${(e.item.price_btc * change).toFixed(
+              2
+            )}</span>
           </div>
         </a>
       `;
@@ -157,7 +157,7 @@ fetch(
 )
   .then((res) => res.json())
   .then((coin) => {
-    Watchprice.innerText = coin.bitcoin.usd;
+    Watchprice.innerText = coin.bitcoin.usd.toLocaleString();
   });
 //
 //

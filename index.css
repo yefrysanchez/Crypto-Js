@@ -132,9 +132,24 @@ img {
 }
 
 .section-img {
-  height: 200px;
+  height: 400px;
   overflow: hidden;
   border-radius: var(--border-radius);
+  background-image: url(/images/crypto-banner.jpg);
+  background-size: 50% cover;
+  animation: gradient 200s linear infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 60%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .trending-container {
@@ -155,7 +170,7 @@ img {
 
 .card {
   width: 150px;
-  height: 150px;
+  min-height: fit-content;
   border: 1px solid var(--grey-light);
   border-radius: var(--border-radius);
   padding: 1rem;
