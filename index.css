@@ -247,6 +247,8 @@ table {
 .search-container {
   position: fixed;
   max-width: 700px;
+  height: 50vh;
+  overflow-y: scroll;
   top: -20%;
   left: 50%;
   transform: translateX(-50%);
@@ -254,10 +256,14 @@ table {
   color: var(--black);
   border-radius: var(--border-radius);
   z-index: 100;
+  opacity: 0;
   transition: var(--transition);
+  pointer-events: none;
 }
 
 .search-container.active {
+  pointer-events: initial;
+  opacity: 1;
   top: 20%;
 }
 

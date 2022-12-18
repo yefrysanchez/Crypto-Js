@@ -9,7 +9,7 @@ Proxima Pagina con Graficos [] -domingo
 
 
 
-show more coin [] -------- poner input de numero absoluto
-fix estrellas [] ----------- try to add fontAwesome
-Show Search []
+show more coin [x] -------- poner input de numero absoluto
+fix estrellas [x] ----------- try to add fontAwesome
+Show Search [x]
 check market cap [x] --------- it looks too much

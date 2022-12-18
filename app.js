@@ -40,28 +40,50 @@ function generateCoins() {
     .catch((err) => console.log(err));
 }
 
-fetch(trendingUrl)
-  .then((res) => res.json())
-  .then((data) =>
-    data.coins.map((e) => {
-      const trending = document.querySelector(".trending");
-      const card = document.createElement("div");
-      card.classList.add("card");
-      card.classList.add("glow");
-      card.innerHTML = `
+//-------------------------------------Trending---------------------
+
+// getiing bitcoin price to convert to USD
+let change;
+
+function btcUsd() {
+  fetch(
+    "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd"
+  )
+    .then((res) => res.json())
+    .then((coin) => {
+      change = coin.bitcoin.usd;
+    });
+}
+
+btcUsd();
+
+setTimeout(() => {
+  fetch(trendingUrl)
+    .then((res) => res.json())
+    .then((data) =>
+      data.coins.map((e) => {
+        const trending = document.querySelector(".trending");
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.classList.add("glow");
+        card.innerHTML = `
         <a href="#">
           <div class="token-img">
             <img src="${e.item.large}" alt="">
           </div>
           <div class="card-data">
             <span class="card-token">${e.item.name}</span>
-            <span class="card-price">${e.item.price_btc.toFixed(6)}</span>
+            <span class="card-price">$${(e.item.price_btc * change)
+              .toFixed(2)
+              .toLocaleString()}</span>
           </div>
         </a>
       `;
-      trending.appendChild(card);
-    })
-  );
+
+        trending.appendChild(card);
+      })
+    );
+}, 1000);
 
 //--------------------------------------Search------------------------------------
 
@@ -69,8 +91,9 @@ const search = document.querySelector(".search");
 const searchBox = document.querySelector(".search-input");
 const searchInput = document.querySelector("#search-input");
 const searchContainer = document.querySelector(".search-container");
-const closeSeach = document.querySelector(".close-seach");
+const closeSearch = document.querySelector(".close-seach");
 const layer = document.querySelector(".layer");
+const tbodySearch = document.querySelector(".search-tbody");
 
 search.addEventListener("click", function () {
   search.classList.toggle("active");
@@ -78,23 +101,64 @@ search.addEventListener("click", function () {
 });
 
 searchInput.addEventListener("submit", function (e) {
-  searchContainer.classList.add("active");
-  layer.classList.add("active");
-  e.target[0].value = "";
+  e.preventDefault();
+  if (e.target[0].value === "") {
+    alert("Search can't be empty");
+  } else {
+    searchContainer.classList.add("active");
+    layer.classList.add("active");
+    searchFetch(e.target[0].value);
+    e.target[0].value = "";
+  }
 });
 
-closeSeach.addEventListener("click", function () {
+closeSearch.addEventListener("click", function () {
   searchContainer.classList.remove("active");
   layer.classList.remove("active");
+  tbodySearch.innerHTML = "";
 });
 
 layer.addEventListener("click", function () {
   searchContainer.classList.remove("active");
   layer.classList.remove("active");
+  tbodySearch.innerHTML = "";
 });
 
+function searchFetch(query) {
+  fetch(`https://api.coingecko.com/api/v3/search?query=${query}`)
+    .then((res) => res.json())
+    .then((data) =>
+      data.coins.forEach((coin) => {
+        const coinSearch = document.createElement("tr");
+        coinSearch.classList.add("search-item");
+        coinSearch.classList.add("glow");
+        coinSearch.innerHTML = `
+        <th><i class="star fa-solid fa-star"></i></th>
+              <td class="top mobile-delete">${
+                coin.market_cap_rank ? coin.market_cap_rank : "N/A"
+              }</td>
+              <th class="name name-coin">
+                <span><img src=${coin.thumb} alt=""></span>
+                ${coin.name}
+              </th>
+              <td class="price">N/A</td>
+              <td class="h24 mobile-delete">N/A</td>
+            </tr>
+        `;
+        tbodySearch.appendChild(coinSearch);
+      })
+    );
+}
+
 //-----------------------------Watchlist Star-----------------------
-//
+const Watchprice = document.querySelector(".card-price");
+fetch(
+  "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd"
+)
+  .then((res) => res.json())
+  .then((coin) => {
+    Watchprice.innerText = coin.bitcoin.usd;
+  });
 //
 //
 
@@ -107,6 +171,5 @@ const inputShow = document.querySelector(".show");
 inputShow.addEventListener("input", function (e) {
   showNum = inputShow.value;
   tableContainer.innerHTML = "";
-  console.log(showNum);
   generateCoins();
 });
