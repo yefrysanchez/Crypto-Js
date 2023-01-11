@@ -27,7 +27,7 @@ function generateCoins() {
     <td class="h24">${coin.price_change_percentage_24h.toFixed(2)}%</th>
     <td class="hour">$${coin.high_24h.toLocaleString()}</th>
     <td class="d7">$${coin.low_24h.toLocaleString()}</th>
-    <td class="market">${coin.market_cap.toLocaleString()}</th>`;
+    <td class="market">$${coin.market_cap.toLocaleString()}</th>`;
         tableContainer.appendChild(table);
         const h24 = document.querySelectorAll(".h24");
         h24.forEach((e) =>
@@ -132,6 +132,7 @@ function searchFetch(query) {
         const coinSearch = document.createElement("tr");
         coinSearch.classList.add("search-item");
         coinSearch.classList.add("glow");
+
         coinSearch.innerHTML = `
         <th><i class="star fa-solid fa-star"></i></th>
               <td class="top mobile-delete">${
